@@ -145,7 +145,7 @@ function Index() {
             ))}
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
             {hangarPhotos.map(({ src, alt, caption, width, height }) => (
               <figure key={caption} className="group overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-sm transition duration-300 hover:shadow-md">
                 <div className="overflow-hidden rounded-xl">
