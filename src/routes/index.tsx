@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Plane, GraduationCap, Wrench, Phone, ArrowRight, Check, Feather, Layers, Package, BatteryCharging } from "lucide-react";
-import aerolite103 from "@/assets/aerolite-103.jpg";
-import challengerII from "@/assets/challenger-ii.jpg";
+import { Plane, GraduationCap, Wrench, Phone, ArrowRight, Check, Feather, Layers, Package, BatteryCharging, Camera } from "lucide-react";
 import quicksilver2s from "@/assets/quicksilver-sport-2s.jpg";
-import mzEngine from "@/assets/mz-engine.jpg";
-import ballisticParachute from "@/assets/ballistic-parachute.jpg";
-import partsAccessories from "@/assets/parts-accessories.jpg";
 import skyClouds from "@/assets/sky-clouds.jpg";
+import aeroliteAsset from "@/assets/aerolite-103.jpg.asset.json";
+import challengerAsset from "@/assets/elizabeth-challenger.jpg.asset.json";
+import mzAsset from "@/assets/mz-201.png.asset.json";
+import magnumAsset from "@/assets/magnum-parachutes.jpg.asset.json";
+import shopAsset from "@/assets/hangar-shop.jpg.asset.json";
+import salesAsset from "@/assets/sales-flight.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,13 +31,13 @@ const services = [
 
 const aircraftLineup = [
   {
-    image: challengerII,
-    alt: "Challenger II light sport aircraft parked on a grass airstrip",
+    src: challengerAsset.url,
+    alt: "Young pilot in a headset at the controls of the Elizabeth Challenger",
     title: "Challenger II",
-    text: "A proven two-seat favorite — economical to fly, easy to maintain, and equally at home on wheels, skis or floats.",
+    text: "A proven two-seat favorite — economical to fly, easy to maintain, and equally at home on wheels, skis or floats. Pictured: the Elizabeth Challenger.",
   },
   {
-    image: quicksilver2s,
+    src: quicksilver2s,
     alt: "Quicksilver Sport 2S ultralight aircraft on a sunny grass runway",
     title: "Quicksilver Sport 2S",
     text: "The classic open-air sport flying experience — light, responsive, and backed by our factory-authorized parts support.",
@@ -47,6 +48,11 @@ const accessories = [
   { icon: Layers, title: "Streamline strut fairings", text: "Reduce drag and pick up performance with clean, slip-on fairings." },
   { icon: Package, title: "Lightweight cargo pods", text: "Add practical storage without giving up useful load." },
   { icon: BatteryCharging, title: "Lightweight lithium batteries", text: "Crank harder and save weight with modern lithium starter batteries." },
+];
+
+const hangarPhotos = [
+  { src: shopAsset.url, alt: "Technician finishing an aircraft fuselage inside the U-Fly-It hangar", caption: "Assembly & repair in our DeLand hangar", width: 222, height: 167 },
+  { src: salesAsset.url, alt: "Two pilots walking around a Challenger aircraft during a sales demo", caption: "Sales walkarounds & demo flights", width: 233, height: 165 },
 ];
 
 function Index() {
@@ -105,10 +111,10 @@ function Index() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">Featured Aircraft</p>
           <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Fly home in an Aerolite 103</h2>
 
-          <article className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-lg shadow-hero/5">
+          <article className="group mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition duration-300 hover:shadow-lg hover:shadow-hero/10">
             <div className="grid md:grid-cols-2">
-              <div className="relative min-h-64 md:min-h-full">
-                <img src={aerolite103} alt="Aerolite 103 ultralight aircraft in flight at golden hour" width={1600} height={912} className="absolute inset-0 h-full w-full object-cover" />
+              <div className="relative min-h-64 overflow-hidden md:min-h-full">
+                <img src={aeroliteAsset.url} alt="Aerolite 103 ultralight aircraft in flight" width={640} height={427} className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
               </div>
               <div className="flex flex-col justify-center p-6 md:p-10">
                 <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">Factory Authorized</span>
@@ -125,15 +131,28 @@ function Index() {
           </article>
 
           <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {aircraftLineup.map(({ image, alt, title, text }) => (
-              <article key={title} className="overflow-hidden rounded-2xl border border-border bg-card">
-                <img src={image} alt={alt} width={1200} height={800} loading="lazy" className="aspect-[3/2] w-full object-cover" />
+            {aircraftLineup.map(({ src, alt, title, text }) => (
+              <article key={title} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition duration-300 hover:shadow-lg hover:shadow-hero/10">
+                <div className="overflow-hidden">
+                  <img src={src} alt={alt} loading="lazy" className="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                </div>
                 <div className="p-6">
                   <h3 className="font-display text-xl font-bold">{title}</h3>
                   <p className="mt-2 text-muted-foreground">{text}</p>
                   <a href="#contact" className="mt-4 inline-flex items-center gap-2 font-semibold text-primary">Inquire about this aircraft <ArrowRight className="h-4 w-4" /></a>
                 </div>
               </article>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
+            {hangarPhotos.map(({ src, alt, caption, width, height }) => (
+              <figure key={caption} className="group overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-sm transition duration-300 hover:shadow-md">
+                <div className="overflow-hidden rounded-xl">
+                  <img src={src} alt={alt} width={width} height={height} loading="lazy" className="w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                </div>
+                <figcaption className="mt-3 flex items-center gap-2 px-1 pb-1 text-sm text-muted-foreground"><Camera className="h-4 w-4 shrink-0 text-primary" /> {caption}</figcaption>
+              </figure>
             ))}
           </div>
         </div>
@@ -145,16 +164,20 @@ function Index() {
           <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Everything your airframe needs</h2>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <article className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card">
-              <img src={mzEngine} alt="Compact lightweight two-stroke aircraft engine on a workshop stand" width={1200} height={800} loading="lazy" className="aspect-[3/2] w-full object-cover" />
+            <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition duration-300 hover:shadow-lg hover:shadow-hero/10">
+              <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-secondary p-8">
+                <img src={mzAsset.url} alt="MZ 201 lightweight two-stroke aircraft engine" width={616} height={616} loading="lazy" className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.03]" />
+              </div>
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="font-display text-xl font-bold">MZ Engines</h3>
                 <p className="mt-2 flex-1 text-muted-foreground">Reliable, lightweight two-stroke powerplants — the MZ 201 and the full series. We stock engines and spares and can help you match the right powerplant to your airframe.</p>
                 <a href="#contact" className="mt-4 inline-flex items-center gap-2 font-semibold text-primary">Talk engines with us <ArrowRight className="h-4 w-4" /></a>
               </div>
             </article>
-            <article className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card">
-              <img src={ballisticParachute} alt="Aircraft descending under a deployed bright orange emergency parachute" width={1200} height={800} loading="lazy" className="aspect-[3/2] w-full object-cover" />
+            <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition duration-300 hover:shadow-lg hover:shadow-hero/10">
+              <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-secondary p-8">
+                <img src={magnumAsset.url} alt="Magnum ballistic parachute systems and rocket-deployed canisters" width={332} height={427} loading="lazy" className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.03]" />
+              </div>
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="font-display text-xl font-bold">Magnum Ballistic Parachutes</h3>
                 <p className="mt-2 flex-1 text-muted-foreground">Whole-aircraft emergency recovery systems — when everything else has failed, the Magnum brings you and your airframe down together, safely.</p>
@@ -163,29 +186,20 @@ function Index() {
             </article>
           </div>
 
-          <article className="mt-6 grid overflow-hidden rounded-2xl border border-border bg-card md:grid-cols-2">
-            <img src={partsAccessories} alt="Carbon strut fairing, cargo pod and lithium batteries on a hangar workbench" width={1200} height={800} loading="lazy" className="h-full max-h-72 w-full object-cover md:max-h-none" />
-            <div className="p-6 md:p-8">
-              <h3 className="font-display text-xl font-bold">Performance Accessories</h3>
-              <div className="mt-5 space-y-5">
-                {accessories.map(({ icon: Icon, title, text }) => (
-                  <div key={title} className="flex gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><Icon className="h-5 w-5" /></div>
-                    <div>
-                      <div className="font-semibold">{title}</div>
-                      <p className="mt-0.5 text-sm text-muted-foreground">{text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <a href="#contact" className="mt-7 inline-flex items-center gap-2 font-semibold text-primary">Request a part <ArrowRight className="h-4 w-4" /></a>
-            </div>
-          </article>
+          <div className="mt-6 grid gap-6 sm:grid-cols-3">
+            {accessories.map(({ icon: Icon, title, text }) => (
+              <article key={title} className="rounded-2xl border border-border bg-card p-6 shadow-sm transition duration-300 hover:shadow-md">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Icon className="h-5 w-5" /></div>
+                <h3 className="mt-4 font-semibold">{title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="relative overflow-hidden">
-        <img src={skyClouds} alt="" aria-hidden="true" width={1600} height={912} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={skyClouds} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero/60" />
         <div className="relative mx-auto max-w-3xl px-4 py-20 text-center text-hero-foreground md:py-28">
           <Feather className="mx-auto h-8 w-8 text-primary" />
