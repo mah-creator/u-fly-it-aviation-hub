@@ -43,9 +43,16 @@ function Index() {
             <a href="#training" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground">Book a discovery flight <ArrowRight className="h-4 w-4" /></a>
             <a href="#sales" className="inline-flex items-center justify-center rounded-full border border-hero-foreground/30 px-6 py-3 font-semibold">View aircraft for sale</a>
           </div>
-          <div className="mt-14 grid grid-cols-3 gap-4 border-t border-hero-foreground/15 pt-6 font-display">
-            {[["25+", "Years flying"], ["1,200", "Pilots trained"], ["10k", "Parts in stock"]].map(([n, l]) => (
-              <div key={l}><div className="text-2xl font-bold md:text-4xl">{n}</div><div className="text-xs opacity-70 md:text-sm">{l}</div></div>
+          <div className="mt-14 grid gap-3 border-t border-hero-foreground/15 pt-6 sm:grid-cols-3 sm:gap-4">
+            {[
+              ["Sun 'n Fun Grand Champion", "Lightplane award winner"],
+              ["20+ Years Operating", "DeLand Municipal Airport (KDED)"],
+              ["Factory Authorized Dealer", "Challenger · Quicksilver · Aerolite 103"],
+            ].map(([n, l]) => (
+              <div key={n} className="rounded-xl border border-hero-foreground/15 bg-hero-foreground/5 px-4 py-3">
+                <div className="text-sm font-bold md:text-base">{n}</div>
+                <div className="mt-1 text-xs opacity-70 md:text-sm">{l}</div>
+              </div>
             ))}
           </div>
         </div>
@@ -66,16 +73,25 @@ function Index() {
       </section>
 
       <section id="contact" className="bg-primary text-primary-foreground">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-16 md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-16 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <h2 className="font-display text-3xl font-bold md:text-4xl">Ready for takeoff?</h2>
             <p className="mt-2 opacity-90">Talk to our team about aircraft, training or parts.</p>
+            <div className="mt-6 space-y-1 text-sm opacity-90">
+              <p>DeLand Municipal Airport · Hangar B<br />915 Biscayne Blvd, DeLand, FL 32724</p>
+              <p><a href="mailto:sportplane@uflyit.com" className="underline decoration-primary-foreground/40 underline-offset-4 hover:decoration-primary-foreground">sportplane@uflyit.com</a></p>
+            </div>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+              <a href="tel:+13867384444" className="inline-flex items-center justify-center gap-2 rounded-full bg-hero px-6 py-3 font-semibold text-hero-foreground"><Phone className="h-4 w-4" /> Office (386) 738-4444</a>
+              <a href="tel:+17404074491" className="inline-flex items-center justify-center gap-2 rounded-full bg-hero px-6 py-3 font-semibold text-hero-foreground"><Phone className="h-4 w-4" /> Cell (740) 407-4491</a>
+            </div>
           </div>
-          <a href="tel:+10000000000" className="inline-flex items-center gap-2 rounded-full bg-hero px-6 py-3 font-semibold text-hero-foreground"><Phone className="h-4 w-4" /> Call us today</a>
         </div>
       </section>
 
-      <footer className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted-foreground">© {new Date().getFullYear()} U-Fly-It. All rights reserved.</footer>
+      <footer className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted-foreground">
+        <p>© {new Date().getFullYear()} U-Fly-It · DeLand Municipal Airport, Hangar B, 915 Biscayne Blvd, DeLand, FL 32724 · <a href="tel:+13867384444" className="hover:text-primary">(386) 738-4444</a> · <a href="mailto:sportplane@uflyit.com" className="hover:text-primary">sportplane@uflyit.com</a></p>
+      </footer>
     </div>
   );
 }
