@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Plane, GraduationCap, Wrench, Phone, ArrowRight, Check, Feather, Layers, Package, BatteryCharging, Camera } from "lucide-react";
 import quicksilver2s from "@/assets/quicksilver-sport-2s.jpg";
 import skyClouds from "@/assets/sky-clouds.jpg";
-import aeroliteAsset from "@/assets/aerolite-103.jpg.asset.json";
-import challengerAsset from "@/assets/elizabeth-challenger.jpg.asset.json";
-import mzAsset from "@/assets/mz-201.png.asset.json";
-import magnumAsset from "@/assets/magnum-parachutes.jpg.asset.json";
-import shopAsset from "@/assets/hangar-shop.jpg.asset.json";
-import salesAsset from "@/assets/sales-flight.jpg.asset.json";
+import aerolite103 from "@/assets/aerolite-103.jpg";
+import challengerImg from "@/assets/elizabeth-challenger.jpg";
+import mz201 from "@/assets/mz-201.png";
+import magnumParachutes from "@/assets/magnum-parachutes.jpg";
+import hangarShop from "@/assets/hangar-shop.jpg";
+import salesFlight from "@/assets/sales-flight.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,7 +31,7 @@ const services = [
 
 const aircraftLineup = [
   {
-    src: challengerAsset.url,
+    src: challengerImg,
     alt: "Young pilot in a headset at the controls of the Elizabeth Challenger",
     title: "Challenger II",
     text: "A proven two-seat favorite — economical to fly, easy to maintain, and equally at home on wheels, skis or floats. Pictured: the Elizabeth Challenger.",
@@ -51,8 +51,8 @@ const accessories = [
 ];
 
 const hangarPhotos = [
-  { src: shopAsset.url, alt: "Technician finishing an aircraft fuselage inside the U-Fly-It hangar", caption: "Assembly & repair in our DeLand hangar", width: 222, height: 167 },
-  { src: salesAsset.url, alt: "Two pilots walking around a Challenger aircraft during a sales demo", caption: "Sales walkarounds & demo flights", width: 233, height: 165 },
+  { src: hangarShop, alt: "Technician finishing an aircraft fuselage inside the U-Fly-It hangar", caption: "Assembly & repair in our DeLand hangar", width: 222, height: 167 },
+  { src: salesFlight, alt: "Two pilots walking around a Challenger aircraft during a sales demo", caption: "Sales walkarounds & demo flights", width: 233, height: 165 },
 ];
 
 function Index() {
@@ -114,7 +114,7 @@ function Index() {
           <article className="group mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition duration-300 hover:shadow-lg hover:shadow-hero/10">
             <div className="grid md:grid-cols-2">
               <div className="relative min-h-64 overflow-hidden md:min-h-full">
-                <img src={aeroliteAsset.url} alt="Aerolite 103 ultralight aircraft in flight" width={640} height={427} className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                <img src={aerolite103} alt="Aerolite 103 ultralight aircraft in flight" width={640} height={427} className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
               </div>
               <div className="flex flex-col justify-center p-6 md:p-10">
                 <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">Factory Authorized</span>
@@ -166,7 +166,7 @@ function Index() {
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition duration-300 hover:shadow-lg hover:shadow-hero/10">
               <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-secondary p-8">
-                <img src={mzAsset.url} alt="MZ 201 lightweight two-stroke aircraft engine" width={616} height={616} loading="lazy" className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.03]" />
+                <img src={mz201} alt="MZ 201 lightweight two-stroke aircraft engine" width={616} height={616} loading="lazy" className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.03]" />
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="font-display text-xl font-bold">MZ Engines</h3>
@@ -176,7 +176,7 @@ function Index() {
             </article>
             <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition duration-300 hover:shadow-lg hover:shadow-hero/10">
               <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-secondary p-8">
-                <img src={magnumAsset.url} alt="Magnum ballistic parachute systems and rocket-deployed canisters" width={332} height={427} loading="lazy" className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.03]" />
+                <img src={magnumParachutes} alt="Magnum ballistic parachute systems and rocket-deployed canisters" width={332} height={427} loading="lazy" className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.03]" />
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="font-display text-xl font-bold">Magnum Ballistic Parachutes</h3>
