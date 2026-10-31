@@ -8,6 +8,7 @@ import mz201 from "@/assets/mz-201.png";
 import magnumParachutes from "@/assets/magnum-parachutes.jpg";
 import hangarShop from "@/assets/hangar-shop.jpg";
 import salesFlight from "@/assets/sales-flight.jpg";
+import logoImg from "@/assets/uflyit-logo.gif";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -59,8 +60,11 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <a href="#" className="font-display text-xl font-bold tracking-tight">U‑FLY‑IT<span className="text-primary">.</span></a>
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
+          <a href="#" className="flex items-center gap-3">
+            <img src={logoImg} alt="U-Fly-It Light Sport Aircraft" className="h-9 md:h-11 w-auto object-contain" />
+            <span className="font-display text-xl font-bold tracking-tight">U‑FLY‑IT<span className="text-primary">.</span></span>
+          </a>
           <nav className="hidden gap-6 text-sm md:flex">
             {services.map((s) => <a key={s.id} href={`#${s.id}`} className="hover:text-primary">{s.title}</a>)}
           </nav>
